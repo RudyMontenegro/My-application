@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "301627376776",
+    "firebase_url": "https://finalapp-852a6.firebaseio.com",
+    "project_id": "finalapp-852a6",
+    "storage_bucket": "finalapp-852a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301627376776:android:1a3f119c6f233691920b3d",
+        "android_client_info": {
+          "package_name": "com.montero.finalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301627376776-kbhh4s7hafrq0n199f1nlhn33vuo22vk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.montero.finalapp",
+            "certificate_hash": "0c984685801799c842ad5041010b7784f7b84e8e"
+          }
+        },
+        {
+          "client_id": "301627376776-7et382ghugouv24ifu7it9ee8a81ih9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANZAlEop3myOWDONLvgoKGhX8zjXIDg7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301627376776-7et382ghugouv24ifu7it9ee8a81ih9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
