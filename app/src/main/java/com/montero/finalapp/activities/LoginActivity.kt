@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.montero.finalapp.R
-import com.montero.finalapp.goToActivity
-import com.montero.finalapp.toast
+import com.montero.finalapp.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -17,24 +15,21 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        /*if (mAuth.currentUser == null){
-            toast("nope")
-        }else{
-            toast("Yep")
-            mAuth.signOut()
-        }*/
-
         buttonLogIn.setOnClickListener {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
 
-            if(isValiEmailAndPassword(email, password)){
+            if((isValidEmail(email) && isValidPassword(password))){
                 logInByEmail(email, password)
             }else{
                 toast("Please fill all the date is correct")
 
             }
         }
+        editTextEmail.validate {
+            editTextEmail.error = if (isValidEmail(it)) null else "Email is not valid"
+        }
+
         textViewForgotPassword.setOnClickListener {goToActivity<ForgotPasswordActivity>()
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)}
         buttonCreateAccount.setOnClickListener {goToActivity<SingUpActivity>()
@@ -45,16 +40,14 @@ class LoginActivity : AppCompatActivity() {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this)
         {task ->
             if (task.isSuccessful){
-                toast("user is now loged in")
+                if(mAuth.currentUser!!.isEmailVerified){
+                    toast("User logged in")
+                }else {
+                    toast("Confirm email first")
+                }
             } else{
                 toast("An unexpected error ocurred, please try again")
             }
         }
-    }
-    private fun isValiEmailAndPassword(email: String,password: String): Boolean {
-        return !email.isNullOrEmpty() &&
-                !password.isNullOrEmpty()
-
-
     }
 }

@@ -3,21 +3,41 @@ package com.montero.finalapp.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.montero.finalapp.R
-import com.montero.finalapp.goToActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.montero.finalapp.*
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
 class ForgotPasswordActivity : AppCompatActivity() {
+
+    private val mAuth: FirebaseAuth by lazy {FirebaseAuth.getInstance()}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
+        editEmailAddress.validate {
+            editEmailAddress.error = if (isValidEmail(it)) null else "Email is not valid"
+        }
+
         buttonGoBack.setOnClickListener {
             goToActivity<LoginActivity> {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             }
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
+        buttonForgot.setOnClickListener {
+            val email = editEmailAddress.text.toString()
+            if (isValidEmail(email)){
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(this){
+                    toast("Email has been sent to reset your password")
+                    goToActivity<LoginActivity> {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+                    }
+                }
+            }else{
+                toast("Please make sure email address is correct.")
+            }
         }
     }
 }

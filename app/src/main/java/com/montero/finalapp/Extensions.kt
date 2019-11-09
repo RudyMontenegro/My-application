@@ -24,15 +24,14 @@ inline fun <reified T : Activity> Activity.goToActivity(noinline init: Intent.()
 fun EditText.validate(validation: (String) -> Unit){
         this.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(editable: Editable) {
-                validation.toString()
+               validation(editable.toString())
             }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            override fun onTextChanged(s: CharSequence?, start: Int, befor: Int, count: Int) {
             }
         })
 }
@@ -46,5 +45,5 @@ fun Activity.isValidPassword(password: String): Boolean{
     return pattern.matcher(password).matches()
 }
 fun Activity.isValidConfirmPassword(password: String, confirmPassword: String): Boolean{
-    return true
+    return password == confirmPassword
 }
