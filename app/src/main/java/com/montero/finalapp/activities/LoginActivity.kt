@@ -52,8 +52,13 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             editTextEmail.error = if (isValidEmail(it)) null else "Email is not valid"
         }
 
-        textViewForgotPassword.setOnClickListener {goToActivity<ForgotPasswordActivity>()
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)}
+        textViewForgotPassword.setOnClickListener {
+            //goToActivity<ForgotPasswordActivity>()
+            //overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)}
+            goToActivity<MainActivity> {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+        }
         buttonCreateAccount.setOnClickListener {goToActivity<SingUpActivity>()
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
@@ -95,6 +100,9 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             if (task.isSuccessful){
                 if(mAuth.currentUser!!.isEmailVerified){
                     toast("User logged in")
+                    goToActivity<MainActivity>{
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    }
                 }else {
                     toast("Confirm email first")
                 }

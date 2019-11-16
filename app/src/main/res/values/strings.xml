@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">finalapp</string>
-
+    <string name="menu_name">WHAT PC BUY?</string>
     <string name="login_email">Email</string>
     <string name="login_passoword">Password</string>
     <string name="login_confirm_passoword">Confirm Password</string>
@@ -12,4 +12,5 @@
     <string name="login_forgot_password">I have forgotten my password</string>
     <string name="login_create_account">Create a new account</string>
     <string name="login_go_login">Go back to Login</string>
+    <string name="action_settings">Settings</string>
 </resources>
