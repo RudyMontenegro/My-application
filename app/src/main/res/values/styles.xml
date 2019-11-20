@@ -11,9 +11,19 @@
         <item name="android:textColorHint">@color/colorSecondaryText</item>
         <item name="android:windowNoTitle">@color/colorAccent</item>
     </style>
+
     <style name="NoPreview" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="android:windowDisablePreview">true</item>
 
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
