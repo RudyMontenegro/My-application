@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/nav_hame"
+            android:title="home">
+        </item>
+        <item
+            android:id="@+id/nav_departure"
+            android:title="departures">
+        </item>
+        <item
+            android:id="@+id/nav_arrivals"
+            android:title="Arrivals">
+        </item>
+    </group>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_profiles"
+                android:title="Profile">
+            </item>
+            <item
+                android:id="@+id/nav_settings"
+                android:title="Settingd">
+            </item>
+        </menu>
+
+    </item>
+</menu>
